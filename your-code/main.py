@@ -10,6 +10,7 @@ print (np.show_config())
 
 a = np.random.randint(0,10, (2, 3, 5))
 
+#There are also the randn() and the rand() functions. 
 
 #4. Print a.
 
