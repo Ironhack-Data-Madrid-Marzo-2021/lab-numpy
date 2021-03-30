@@ -86,6 +86,20 @@ Assign 100 to the corresponding value(s) in f for d_max in d.
 In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
+f_new = []
+for num in np.nditer(d):
+    if (num > d_min) and (num < d_mean):
+        f_new.append(25)
+    elif (num > d_mean) and (num < d_max):
+        f_new.append(75)
+    elif (num == d_mean):
+        f_new.append(50)
+    elif (num == d_min):
+        f_new.append(0)
+    else:
+        f_new.append(100)
+f = np.array(f_new).reshape((2,3,5))
+print(f)
 
 
 
