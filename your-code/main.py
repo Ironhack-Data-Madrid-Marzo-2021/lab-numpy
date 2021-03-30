@@ -89,7 +89,7 @@ print(f"El valor medio de d \n {d} \n  es: {d_mean}")
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
 
 f = np.empty((2, 3, 5), dtype=int)
-print(f"La matriz e:\n {f}")
+print(f"La matriz f:\n {f}")
 
 
 """
@@ -103,6 +103,13 @@ Note: you don't have to use Numpy in this question.
 """
 
 
+f[(d_min < d) & (d < d_mean)] = 25
+f[(d_mean < d) & (d < d_max)] = 75
+f[(d_mean == d)] = 50
+f[(d_min == d)] = 0
+f[(d_max == d)] = 100
+
+print(f)
 
 
 """
@@ -126,6 +133,10 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
 
+print(f"La matriz d:\n {d}")
+print(f"La matriz f:\n {f}")
+
+print(f.shape)
 
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
@@ -139,3 +150,37 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
+print("Eercicio 18")
+v1 = float(75)
+
+nuevos_valores = list(f.flatten())
+print(nuevos_valores)
+
+for i, v in enumerate(nuevos_valores):
+        if v == 0:
+                nuevos_valores[i] = "A"
+        elif v == 25:
+                nuevos_valores[i] = "B"
+        elif v == 50:
+                nuevos_valores[i] = "C"
+        elif v == 75:
+                nuevos_valores[i] = "D"
+        elif v == 100:
+                nuevos_valores[i] = "E"
+
+f = np.array(nuevos_valores).reshape(2, 3, 5)
+
+
+print(nuevos_valores)
+'''
+for elem1 in f:
+        for elem2 in elem1:
+                for elem3 in elem2:
+                        print(elem3)
+                        f[elem3] = "D"
+'''
+
+
+
+
+print(f"La matriz f:\n {f}")
