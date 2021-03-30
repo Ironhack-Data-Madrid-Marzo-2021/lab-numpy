@@ -1,28 +1,31 @@
 #1. Import the NUMPY package under the name np.
 
-
+import numpy as np
 
 #2. Print the NUMPY version and the configuration.
 
-
+print(np.version.version)
 
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
 
+a = np.random.randint(0, 100, (3, 4, 3))
 
+# Another way to create an array with random integers is np.random.randint(1,101,5), which in this cas gives 5 integers between 1 and 100. 
+# A third way is using np.random.random(10). This creates an array with 10 numbers between 0 and 1. 
 
 #4. Print a.
 
-
+print(a)
 
 #5. Create a 5x2x3 3-dimensional array with all values equaling 1.
 #Assign the array to variable "b"
 
-
+b = np.ones((3, 4, 3))
 
 #6. Print b.
 
-
+print(b)
 
 #7. Do a and b have the same size? How do you prove that in Python code?
 
