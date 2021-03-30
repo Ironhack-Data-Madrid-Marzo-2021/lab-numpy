@@ -1,4 +1,6 @@
 #1. Import the NUMPY package under the name np.
+import numpy as np
+
 
 
 
