@@ -12,7 +12,7 @@
 
 
 #4. Print a.
-
+k
 
 
 #5. Create a 5x2x3 3-dimensional array with all values equaling 1.
