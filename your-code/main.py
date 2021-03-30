@@ -77,15 +77,11 @@ d_mean = d.mean()
 f = np.empty([2, 3, 5])
 
 
-"""
-#16. Populate the values in f. For each value in d, if it's larger than d_min but smaller than d_mean, assign 25 to the corresponding value in f.
-If a value in d is larger than d_mean but smaller than d_max, assign 75 to the corresponding value in f.
-If a value equals to d_mean, assign 50 to the corresponding value in f.
-Assign 0 to the corresponding value(s) in f for d_min in d.
-Assign 100 to the corresponding value(s) in f for d_max in d.
-In the end, f should have only the following values: 0, 25, 50, 75, and 100.
-Note: you don't have to use Numpy in this question.
-"""
+#16. Populate the values in f. For each value in d, if it's larger than d_min but smaller than d_mean, assign 25 to the corresponding value in f. If a value in d is larger than d_mean but smaller than d_max, assign 75 to the corresponding value in f. 
+# If a value equals to d_mean, assign 50 to the corresponding value in f. Assign 0 to the corresponding value(s) in f for d_min in d.
+# Assign 100 to the corresponding value(s) in f for d_max in d. In the end, f should have only the following values: 0, 25, 50, 75, and 100.
+# Note: you don't have to use Numpy in this question.
+
 f_new = []
 for num in np.nditer(d):
     if (num > d_min) and (num < d_mean):
@@ -99,42 +95,56 @@ for num in np.nditer(d):
     else:
         f_new.append(100)
 f = np.array(f_new).reshape((2,3,5))
+
+
+
+#17. Print d and f. Do you have your expected f?
+# For instance, if your d is:
+# array([[[1.85836099, 1.67064465, 1.62576044, 1.40243961, 1.88454931],
+# [1.75354326, 1.69403643, 1.36729252, 1.61415071, 1.12104981],
+#       [1.72201435, 1.1862918 , 1.87078449, 1.7726778 , 1.88180042]],
+# 
+#        [[1.44747908, 1.31673383, 1.02000951, 1.52218947, 1.97066381],
+#       [1.79129243, 1.74983003, 1.96028037, 1.85166831, 1.65450881],
+#       [1.18068344, 1.9587381 , 1.00656599, 1.93402165, 1.73514584]]])
+
+#Your f should be:
+# array([[[ 75.,  75.,  75.,  25.,  75.],
+#       [ 75.,  75.,  25.,  25.,  25.],
+#       [ 75.,  25.,  75.,  75.,  75.]],
+# 
+#      [[ 25.,  25.,  25.,  25., 100.],
+#       [ 75.,  75.,  75.,  75.,  75.],
+#       [ 25.,  75.,   0.,  75.,  75.]]])
+
+
+print(d)
 print(f)
 
 
-
-
-"""
-#17. Print d and f. Do you have your expected f?
-For instance, if your d is:
-array([[[1.85836099, 1.67064465, 1.62576044, 1.40243961, 1.88454931],
-        [1.75354326, 1.69403643, 1.36729252, 1.61415071, 1.12104981],
-        [1.72201435, 1.1862918 , 1.87078449, 1.7726778 , 1.88180042]],
-
-       [[1.44747908, 1.31673383, 1.02000951, 1.52218947, 1.97066381],
-        [1.79129243, 1.74983003, 1.96028037, 1.85166831, 1.65450881],
-        [1.18068344, 1.9587381 , 1.00656599, 1.93402165, 1.73514584]]])
-
-Your f should be:
-array([[[ 75.,  75.,  75.,  25.,  75.],
-        [ 75.,  75.,  25.,  25.,  25.],
-        [ 75.,  25.,  75.,  75.,  75.]],
-
-       [[ 25.,  25.,  25.,  25., 100.],
-        [ 75.,  75.,  75.,  75.,  75.],
-        [ 25.,  75.,   0.,  75.,  75.]]])
-"""
-
-
-"""
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
-("A", "B", "C", "D", and "E") to label the array elements? You are expecting the result to be:
-array([[[ 'D',  'D',  'D',  'B',  'D'],
-        [ 'D',  'D',  'B',  'B',  'B'],
-        [ 'D',  'B',  'D',  'D',  'D']],
+# ("A", "B", "C", "D", and "E") to label the array elements? You are expecting the result to be:
+# array([[[ 'D',  'D',  'D',  'B',  'D'],
+#         [ 'D',  'D',  'B',  'B',  'B'],
+#       [ 'D',  'B',  'D',  'D',  'D']],
+#      [[ 'B',  'B',  'B',  'B',  'E'],
+#       [ 'D',  'D',  'D',  'D',  'D'],
+#         [ 'B',  'D',   'A',  'D', 'D']]])
+# Again, you don't need Numpy in this question.
 
-       [[ 'B',  'B',  'B',  'B',  'E'],
-        [ 'D',  'D',  'D',  'D',  'D'],
-        [ 'B',  'D',   'A',  'D', 'D']]])
-Again, you don't need Numpy in this question.
-"""
+
+f_new = []
+for num in np.nditer(d):
+    if (num > d_min) and (num < d_mean):
+        f_new.append("A")
+    elif (num > d_mean) and (num < d_max):
+        f_new.append("B")
+    elif (num == d_mean):
+        f_new.append("C")
+    elif (num == d_min):
+        f_new.append("D")
+    else:
+        f_new.append("E")
+f_final = np.array(f_new).reshape((2,3,5))
+
+print(f_final)
