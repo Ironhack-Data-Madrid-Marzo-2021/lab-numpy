@@ -136,7 +136,7 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
 print(f"La matriz d:\n {d}")
 print(f"La matriz f:\n {f}")
 
-print(f.shape)
+#print(f.shape)
 
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
@@ -150,11 +150,10 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
-print("Eercicio 18")
-v1 = float(75)
+
+
 
 nuevos_valores = list(f.flatten())
-print(nuevos_valores)
 
 for i, v in enumerate(nuevos_valores):
         if v == 0:
@@ -170,15 +169,6 @@ for i, v in enumerate(nuevos_valores):
 
 f = np.array(nuevos_valores).reshape(2, 3, 5)
 
-
-print(nuevos_valores)
-'''
-for elem1 in f:
-        for elem2 in elem1:
-                for elem3 in elem2:
-                        print(elem3)
-                        f[elem3] = "D"
-'''
 
 
 
