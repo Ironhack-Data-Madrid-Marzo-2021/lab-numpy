@@ -1,72 +1,76 @@
-#1. Import the NUMPY package under the name np.
+# 1. Import the NUMPY package under the name np.
+import numpy as np
 
 
+# 2. Print the NUMPY version and the configuration.
+print(np.__version__)
+print(np.show_config())
 
-#2. Print the NUMPY version and the configuration.
 
-
-
-#3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
+# 3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
+a = np.random.randint(0, 100, size=(2, 3, 5))
 
 
+# 4. Print a.
+print(a)
 
-#4. Print a.
+# 5. Create a 5x2x3 3-dimensional array with all values equaling 1.
+# Assign the array to variable "b"
+b = np.ones((5, 2, 3))
 
+# 6. Print b.
+print(b)
 
+# 7. Do a and b have the same size? How do you prove that in Python code?
+print(a.shape == b.shape)
 
-#5. Create a 5x2x3 3-dimensional array with all values equaling 1.
-#Assign the array to variable "b"
+# 8. Are you able to add a and b? Why or why not?
 
+# ValueError: operands could not be broadcast together with shapes (2,3,5) (5,2,3)
+# They have to be the same shape
 
+# 9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
+c = np.transpose(b, (1, 2, 0))
+print(a.shape)
+print(c.shape)
 
-#6. Print b.
+# 10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
+d = a + c
+print(d)
+# the have the same structure now so it works
 
+# 11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
+print("This is A: \n", a)
+print("This is D: \n", d)
 
-
-#7. Do a and b have the same size? How do you prove that in Python code?
-
-
-
-
-#8. Are you able to add a and b? Why or why not?
-
-
-
-#9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
-
-
-
-#10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
-
-
-
-#11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
-
-
-
-
-#12. Multiply a and c. Assign the result to e.
+# Everything in D is incremented by 1 to the values of a
 
 
+# 12. Multiply a and c. Assign the result to e.
+e = a * c
+print("E:\n", e)
+print("A:\n", a)
 
-#13. Does e equal to a? Why or why not?
+# 13. Does e equal to a? Why or why not?
+print((a == e).all())
+# All of the elements in a are equal to all of the elements of e. There is a True in all elements when you compare them.
 
+# 14. Identify the max, min, and mean values in d. Assign those values to variables "d_max", "d_min", and "d_mean"
+print("D:\n", d)
+d_max = d.max()
+d_min = d.min()
+d_mean = d.mean()
+print(d_max)
+print(d_min)
+print(d_mean)
 
-
-
-#14. Identify the max, min, and mean values in d. Assign those values to variables "d_max", "d_min", and "d_mean"
-
-
-
-
-#15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
-
-
-
+# 15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
+f = np.empty([2, 3, 5])
+print(f)
 
 """
-#16. Populate the values in f. For each value in d, if it's larger than d_min but smaller than d_mean, assign 25 to the corresponding value in f.
+# 16. Populate the values in f. For each value in d, if it's larger than d_min but smaller than d_mean, assign 25 to the corresponding value in f.
 If a value in d is larger than d_mean but smaller than d_max, assign 75 to the corresponding value in f.
 If a value equals to d_mean, assign 50 to the corresponding value in f.
 Assign 0 to the corresponding value(s) in f for d_min in d.
@@ -75,11 +79,17 @@ In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
 
+print("BREAK\n")
 
+f[(d > d_min) & (d < d_mean)] = 25
+f[(d > d_mean) & (d < d_max)] = 75
+f[d == d_mean] = 50
+f[d == d_min] = 0
+f[d == d_max] = 100
 
 
 """
-#17. Print d and f. Do you have your expected f?
+# 17. Print d and f. Do you have your expected f?
 For instance, if your d is:
 array([[[1.85836099, 1.67064465, 1.62576044, 1.40243961, 1.88454931],
         [1.75354326, 1.69403643, 1.36729252, 1.61415071, 1.12104981],
@@ -98,10 +108,10 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
-
+print(d, f)
 
 """
-#18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
+# 18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values
 ("A", "B", "C", "D", and "E") to label the array elements? You are expecting the result to be:
 array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'D',  'D',  'B',  'B',  'B'],
@@ -112,3 +122,11 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
+g = f.astype('str')
+g[(d > d_min) & (d < d_mean)] = "B"
+g[(d > d_mean) & (d < d_max)] = "D"
+g[d == d_mean] = "C"
+g[d == d_min] = "A"
+g[d == d_max] = "E"
+
+print(g)
