@@ -1,67 +1,83 @@
 #1. Import the NUMPY package under the name np.
-s
+import numpy as np
 
 
 #2. Print the NUMPY version and the configuration.
-
+print(np.__version__)
+print(np.show_config())
 
 
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
 
-
+a = np.random.rand(2, 3, 5)
 
 #4. Print a.
 
+print(a)
 
 
 #5. Create a 5x2x3 3-dimensional array with all values equaling 1.
 #Assign the array to variable "b"
 
+b = np.ones((5, 2, 3))
 
 
 #6. Print b.
 
-
+print(b)
 
 #7. Do a and b have the same size? How do you prove that in Python code?
 
-
+# yes, a and b have a size of 30. However, a has a shape of (2,3,5) and b has a shape of (5,3,2)
+a.size == b.size
 
 
 #8. Are you able to add a and b? Why or why not?
 
+# a+b= error. a has a shape of (2,3,5) and b has a shape of (5,3,2) so they can't be broadcasted together.
 
 
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
 
-
+c = np.transpose(b, (1,2,0))
 
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
 
-
+d = np.add(a,c)
+# Before, they had different sizes and therefore, could'nt be added.
 
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
 
-
+print(" a is ","\n", a)
+print("\n")
+print(" d is ","\n", d)
 
 
 #12. Multiply a and c. Assign the result to e.
 
-
+e = np.multiply(a,c)
 
 #13. Does e equal to a? Why or why not?
 
-
+# Yes, they are both equal since they have the same size (30) and the same shape (2,3,5)
 
 
 #14. Identify the max, min, and mean values in d. Assign those values to variables "d_max", "d_min", and "d_mean"
 
+d_max = d.max()
+d_max
 
+d_min = d.min()
+d_min
+
+d_mean = d.mean()
+d_mean
 
 
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
 
+f = np.empty((2, 3, 5))
 
 
 
@@ -75,8 +91,27 @@ In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
 
+for x in d:
+    
+    if x.any() > d_min and x.any() < d_mean:
+        x = 25
+        x.append(f)
 
+    if x.any() > d_mean and x.any() < d_max:
+        x = 75
+        x.append(f)
 
+    if x.any() == d_mean:
+        x = 50
+        x.append(f)
+
+    if x.any() == d_min:
+        x = 0
+        x.append(f)
+
+    if x.any() == d_max:
+        x = 100
+        x.append(f)
 
 """
 #17. Print d and f. Do you have your expected f?
@@ -98,7 +133,7 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
-
+print(f)
 
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
@@ -112,3 +147,4 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
+np.where((((f==0) & (f==25) & (f==50) & (f==75) & (f==100)), "A", "B", "C", "D", "E"), f)
