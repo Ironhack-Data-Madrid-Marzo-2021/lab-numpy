@@ -57,10 +57,12 @@ except Exception as e:
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
 
-c = b.reshape(2,3,5)
+c_ = b.reshape(2,3,5)  #podíaos haberlo hecho con un reshape
+
+c=np.transpose(b, (1, 2,0))
 
 try:
-        print(f"\nEl array a y c son de iguales dimensiones\n")
+        print(f"\nEl array a y c ahora son de iguales dimensiones\n")
         d = a + c
         print("Si es posible sumarlos saldría este mensaje.\n El resultado de:\n\n", a, ' +\n ', c," =\n ",d)
         print(a.shape," es igual a ", c.shape)
@@ -158,15 +160,31 @@ Again, you don't need Numpy in this question.
 
 
 """
+print(d.shape)
+#f_bonus= [[["X" for _ in range(d.shape[0])] for _ in range(d.shape(1)] for _ in range(d.shape(2))]
+def escala_letras(x, d_min, d_max, d_mean):
+        if x > d_min and x < d_mean:
+                return 'A'            
 
-f_bonus=str((d.shape)))
+        elif x > d_mean and x < d_max:
+                return 'B'
 
-f_bonus[(d> d_min) &  (d < d_mean)]='A'
-f_bonus[(d > d_mean) & (d < d_max)]='B'
-f_bonus[d == d_mean]='C'
-f_bonus[d == d_min]='D'
-f_bonus[d == d_max]='E'
+        elif x == d_mean:
+                return 'C'
+
+        elif x == d_min:
+                return 'D'
+
+        elif x == d_max:
+                return 'E'
+
+        return 'CACA'
+        
+f_bonus=np.array([[[escala_letras(d[i,j,k], d_min, d_max, d_mean) for i in range(d.shape[0])] for j in range(d.shape[1]) ] for k in range(d.shape[2]) ])
+print(f_bonus)
+
+
 print("El array 'd' es:\n")
 print(d)
 print("\nEl array 'f_bonus' es:\n")
-print(f)
+print(f_bonus)
