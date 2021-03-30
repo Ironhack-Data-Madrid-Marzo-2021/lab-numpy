@@ -117,7 +117,7 @@ f[(d> d_min) &  (d < d_mean)]=25
 f[(d > d_mean) & (d < d_max)]=75
 f[d == d_mean]=50
 f[d == d_min]=0
-f[d == d_max]=100
+f[d == d_max]=100   
 
 
 """
@@ -161,7 +161,6 @@ Again, you don't need Numpy in this question.
 
 """
 print(d.shape)
-#f_bonus= [[["X" for _ in range(d.shape[0])] for _ in range(d.shape(1)] for _ in range(d.shape(2))]
 def escala_letras(x, d_min, d_max, d_mean):
         if x > d_min and x < d_mean:
                 return 'A'            
@@ -178,7 +177,7 @@ def escala_letras(x, d_min, d_max, d_mean):
         elif x == d_max:
                 return 'E'
 
-        return 'CACA'
+        return 'Aquí no debería entrar nunca'
         
 f_bonus=np.array([[[escala_letras(d[i,j,k], d_min, d_max, d_mean) for i in range(d.shape[0])] for j in range(d.shape[1]) ] for k in range(d.shape[2]) ])
 print(f_bonus)
