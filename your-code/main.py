@@ -103,13 +103,36 @@ Note: you don't have to use Numpy in this question.
 """
 
 
+#METODO de Emilio!
+
 f[(d_min < d) & (d < d_mean)] = 25
 f[(d_mean < d) & (d < d_max)] = 75
 f[(d_mean == d)] = 50
 f[(d_min == d)] = 0
 f[(d_max == d)] = 100
 
+
+'''
+#Intento
+
+nuevos_val = list(f.flatten())
+for i in nuevos_val:
+        if (d_min < d) & (d < d_mean):
+                nuevos_val[i] = 25
+        
+        elif (d_mean < d) & (d < d_max):
+                nuevos_valores[i] = 75
+        elif (d_mean == d):
+                nuevos_valores[i] = 50
+        elif (d_min == d):
+                nuevos_valores[i] = 0
+        elif (d_max == d):
+                nuevos_valores[i] = 100
+
+f = np.array(nuevos_valores).reshape(2, 3, 5)
+
 print(f)
+'''
 
 
 """
