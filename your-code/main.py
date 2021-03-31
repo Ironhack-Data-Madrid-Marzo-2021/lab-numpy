@@ -1,68 +1,84 @@
 #1. Import the NUMPY package under the name np.
-
+import numpy as np
 # Hola
 
 #2. Print the NUMPY version and the configuration.
-
+print(np.__version__)
 
 
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
-
-
-
+a = np.random.random((2, 3, 5))
+a = np.random.sample((2, 3, 5))
+a = np.random.rand(2, 3, 5)
 #4. Print a.
-
+print(a)
 
 
 #5. Create a 5x2x3 3-dimensional array with all values equaling 1.
 #Assign the array to variable "b"
-
+b = np.ones((5, 2, 3))
 
 
 #6. Print b.
-
+print(b)
 
 
 #7. Do a and b have the same size? How do you prove that in Python code?
 
-
+if a.size == b.size:
+    print("Son iguales")
+else:
+    print("No tienen el mismo tamaño")
 
 
 #8. Are you able to add a and b? Why or why not?
-
-
+a.shape 
+b.shape
+'''Al hacer a.shape vemos que tiene 2, 3, 5 y al hacer b.shape vemos que tiene 5, 2, 3
+lo cual vemos que de tamaño son iguales, pero de forma son diferentes y no se puede'''
 
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
-
+c = np.transpose(b, axes=(1, 2, 0)) # Lo he sacado gracias a la documentacion de Ana que nos ha pasado, si no 2 horas probando :D
+c.shape
 
 
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
-
-
+d = a + c
+"""
+Ahora deja sumar a y c en la variable d porque tienen el mismo tamaño y la misma forma, se puede comprobar con .shape 
+"""
 
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
-
+print(a[0])
+print(d[0]
 
 
 
 #12. Multiply a and c. Assign the result to e.
-
+e = a * c
+print(e)
 
 
 #13. Does e equal to a? Why or why not?
-
+print(a)
+''' Si son iguales porque los valores de b que son todo unos estan en c con transpose,
+ lo cual significa que a esta multiplicando los valores de c * 1 '''
 
 
 
 #14. Identify the max, min, and mean values in d. Assign those values to variables "d_max", "d_min", and "d_mean"
-
-
+d_max = d.max()
+d_min = d.min()
+d_mean = d.mean()
+print(d_max)
+print(d_min)
+print(d_mean)
 
 
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
-
-
+f = np.empty([2, 3, 5])
+print(f)
 
 
 """
@@ -74,6 +90,25 @@ Assign 100 to the corresponding value(s) in f for d_max in d.
 In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
+
+f = []
+for x in np.nditer(d):
+    if d_min < x < d_mean:
+        f += [25]
+    if d_mean < x < d_max:
+        f += [75]
+    if x == d_mean:
+        f += [50]
+    if x == d_min:
+        f += [0]
+    if x == d_max:
+        f += [100]
+    
+        
+f = np.(f, d.shape) 
+print(f)
+
+
 
 
 
@@ -98,7 +133,8 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
-
+print(d)
+print(f)
 
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
