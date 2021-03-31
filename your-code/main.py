@@ -82,6 +82,12 @@ Assign 100 to the corresponding value(s) in f for d_max in d.
 In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
+l= np.amax (d)
+j= np.min (d)
+k= np.mean (d)
+
+
+
 f[(d>j) & (d<k)]= (25)
 f[(d>k) & (d<l)]= (75)
 f[d==k]=(50)
